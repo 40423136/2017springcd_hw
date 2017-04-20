@@ -1,228 +1,45 @@
 # Liquid-style Tags
 *Author: Jake Vanderplas <jakevdp@cs.washington.edu>*
-
+ 
 This plugin allows liquid-style tags to be inserted into markdown within
-Pelican documents. Liquid uses tags bounded by ``{% ... %}``, and is used
+Pelican documents. Liquid uses tags bounded by ``{{% ... %}}``, and is used
 to extend markdown in other blogging platforms such as octopress.
-
+ 
 This set of extensions does not actually interface with liquid, but allows
 users to define their own liquid-style tags which will be inserted into
 the markdown preprocessor stream.  There are several built-in tags, which
 can be added as follows.
-
+ 
 First, in your pelicanconf.py file, add the plugins you want to  use:
-
+ 
     PLUGIN_PATH = '/path/to/pelican-plugins'
     PLUGINS = ['liquid_tags.img', 'liquid_tags.video',
                'liquid_tags.youtube', 'liquid_tags.vimeo',
                'liquid_tags.include_code', 'liquid_tags.notebook']
-
+ 
 There are several options available
-
+ 
 ## Image Tag
 To insert a sized and labeled image in your document, enable the
 ``liquid_tags.img`` plugin and use the following:
-
-    {% img [class name(s)] path/to/image [width [height]] [title text | "title text" ["alt text"]] %}
-
+ 
+    {{% img [class name(s)] path/to/image [width [height]] [title text | "title text" ["alt text"]] %}}
+ 
 ### Base64 Image (inline image) tag
-
-There is one more tag for image: ``b64img``. It is based on ``img`` tag, but instead of inserting link on image it acutally reads image and inserts it as base64 text into ``<img src=`` attribute.
-
-To use it:
-
-1. Enable ``liquid_tags.b64img``
-1. Insert tag as you'd insert image one: ``{% b64img [class name(s)] path/to/image [width [height]] [title text | "title text" ["alt text"]] %}``
-
-Images are read on compilation phase so you can use any local path (just be sure that image will remain there on next compilation)
-
-## Instagram Tag
-To insert a sized and labeled Instagram image in your document by its shortcode (such as ``pFI0CAIZna``), enable the ``liquid_tags.gram`` plugin and use the following:
-
-    {% gram shortcode [size] [width] [class name(s)] [title text | "title text" ["alt text"]] %}
-
-You can specify a size with `t`, `m`, or `l`.
-
-## Flickr Tag
-To insert a Flickr image to a post, follow these steps:
-
-1. Enable ``liquid_tags.flickr``
-2. [Get an API key from Flickr](https://www.flickr.com/services/apps/create/apply)
-3. Add FLICKR_API_KEY to your config
-4. Add this to your document:
-
-    ``{% flickr image_id [small|medium|large] ["alt text"|'alt text'] %}``
-
-## Giphy Tag
-To insert a gif from Giphy in your document by its id (such as ``aMSJFS6oFX0fC``), enable the ``liquid_tags.giphy`` plugin and use the following:
-
-    {% giphy gif_id ["alt text"|'alt text'] %}
-
-IMPORTANT: You have to request a production API key from giphy [here](https://api.giphy.com/submit).
-For the first runs you could also use the public beta key you can get [here](https://github.com/giphy/GiphyAPI).
-
-## Soundcloud Tag
-To insert a Soundcloud Widget to a post, follow these steps:
-
-1. Enable ``liquid_tags.soundcloud``
-2. Add this to your document:
-
-    ``{% soundcloud track_url %}``
-
-## Youtube Tag
-To insert youtube video into a post, enable the
-``liquid_tags.youtube`` plugin, and add to your document:
-
-    {% youtube youtube_id [width] [height] %}
-
-The width and height are in pixels, and can be optionally specified.  If they
-are not, then the dimensions will be 640 (wide) by 390 (tall).
-
-If you're experiencing issues with code generating (i.e. missing closing tags), add `SUMMARY_MAX_LENGTH = None` to your config.
-
-## Vimeo Tag
-To insert a Vimeo video into a post, enable the
-``liquid_tags.vimeo`` plugin, and add to your document:
-
-    {% vimeo vimeo_id [width] [height] %}
-
-The width and height are in pixels, and can be optionally specified.  If they
-are not, then the dimensions will be 640 (wide) by 390 (tall).
-
-If you're experiencing issues with code generating (i.e. missing closing tags), add `SUMMARY_MAX_LENGTH = None` to your config.
-
-## Video Tag
-To insert flash/HTML5-friendly video into a post, enable the
-``liquid_tags.video`` plugin, and add to your document:
-
-    {% video /url/to/video.mp4 [width] [height] [/path/to/poster.png] %}
-
-The width and height are in pixels, and can be optionally specified.  If they
-are not, then the original video size will be used.  The poster is an image
-which is used as a preview of the video.
-
-To use a video from file, make sure it's in a static directory and put in
-the appropriate url.
-
-## Audio Tag
-To insert HTML5 audio into a post, enable the ``liquid_tags.audio`` plugin,
-and add to your document:
-
-    {% audio url/to/audio [url/to/audio] [url/to/audio] %}
-
-Up to 3 audio urls are possible. So you can add different versions of
-the audio file you want to post because not every browser support every
-file format.
-
-To use a audio from file, make sure it's in a static directory and put in
-the appropriate url.
-
-## Include Code
-To include code from a file in your document with a link to the original
-file, enable the ``liquid_tags.include_code`` plugin, and add to your
-document:
-
-    {% include_code /path/to/code.py [lang:python] [lines:X-Y] [:hidefilename:] [title] %}
-
-All arguments are optional but their order must be kept. `:hidefilename:` is
-only allowed if a title is also given.
-
-    {% include_code /path/to/code.py lines:1-10 :hidefilename: Test Example %}
-
-This example will show the first 10 lines of the file while hiding the actual
-filename.
-
-The script must be in the ``code`` subdirectory of your content folder:
-this default location can be changed by specifying
-
-    CODE_DIR = 'code'
-
-within your configuration file. Additionally, in order for the resulting
-hyperlink to work, this directory must be listed under the STATIC_PATHS
-setting, e.g.:
-
-    STATIC_PATHS = ['images', 'code']
-
-## IPython notebooks
-
-To insert an [IPython][] notebook into your post, enable the
-``liquid_tags.notebook`` plugin and add to your document:
-
-    {% notebook filename.ipynb %}
-
-The file should be specified relative to the ``notebooks`` subdirectory of the
-content directory.  Optionally, this subdirectory can be specified in the
-config file:
-
-    NOTEBOOK_DIR = 'notebooks'
-
-Because the conversion and rendering of notebooks is rather involved, there
-are a few extra steps required for this plugin:
-
-- First, you will need to install IPython:
-
-      pip install ipython==2.4.1
-
-- After typing "make html" when using the notebook tag, a file called
-  ``_nb_header.html`` will be produced in the main directory.  The content
-  of the file should be included in the header of the theme.  An easy way
-  to accomplish this is to add the following lines within the header template
-  of the theme you use:
-
-      {% if EXTRA_HEADER %}
-      {{ EXTRA_HEADER }}
-      {% endif %}
-
-  and in your configuration file, include the line:
-
-      EXTRA_HEADER = open('_nb_header.html').read().decode('utf-8')
-
-  this will insert the proper css formatting into your document.
-
-### Optional Arguments for Notebook Tags
-
-The notebook tag also has two optional arguments: ``cells`` and ``language``.
-
-- You can specify a slice of cells to include:
-
-  ``{% notebook filename.ipynb cells[2:8] %}``
-
-- You can also specify the name of a language which Pygments should use for
-  highlighting code cells. A list of the short names for languages that Pygments
-  will highlight can be found [here](http://www.pygments.org/docs/lexers/).
-
-  ``{% notebook filename.ipynb language[julia] %}``
-
-  This may be helpful for those using [IJulia](https://github.com/JuliaLang/IJulia.jl)
-  or notebooks in any other language, especially as the IPython project [broadens its
-  scope](https://github.com/ipython/ipython/wiki/Roadmap:-IPython) of [language
-  compatibility](http://jupyter.org/). By default, the language for highlighting
-  will be ``ipython``.
-
-- These options can be used separately, together, or not at all. However,
-  if both tags are used then ``cells`` must come before ``language``:
-
-  ``{% notebook filename.ipynb cells[2:8] language[julia] %}``
-
-### Collapsible Code in IPython Notebooks
-
-The plugin also enables collapsible code input boxes. For this to work
-you first need to copy the file ``pelicanhtml_3.tpl`` (for IPython
-3.x, ``pelicanhtml_2.tpl`` (for IPython 2.x)...) to the top level of your
-Pelican blog. Notebook input cells containing the comment line ``#
-<!-- collapse=True -->`` will be collapsed when the html page is
+ 
+There is one more tag for image: ``b64img``. It is based on ``img`` tag, but instead of inserting link on image it acutally reads image and inserts it as base64 text into ``<img src="``" attribute.="" to="" use="" it:="" 1.="" enable="" ``liquid_tags.b64img``="" insert="" tag="" as="" you'd="" image="" one:="" ``{{%="" b64img="" [class="" name(s)]="" path="" [width="" [height]]="" [title="" text="" |="" "title="" text"="" ["alt="" text"]]="" %}}``="" images="" are="" read="" on="" compilation="" phase="" so="" you="" can="" any="" local="" (just="" be="" sure="" that="" will="" remain="" there="" next="" compilation)="" ##="" instagram="" a="" sized="" and="" labeled="" in="" your="" document="" by="" its="" shortcode="" (such="" ``pfi0caizna``),="" the="" ``liquid_tags.gram``="" plugin="" following:="" {{%="" gram="" [size]="" [width]="" %}}="" specify="" size="" with="" `t`,="" `m`,="" or="" `l`.="" flickr="" post,="" follow="" these="" steps:="" ``liquid_tags.flickr``="" 2.="" [get="" an="" api="" key="" from="" flickr](https:="" www.flickr.com="" services="" apps="" create="" apply)="" 3.="" add="" flickr_api_key="" config="" 4.="" this="" document:="" image_id="" [small|medium|large]="" text"|'alt="" text']="" giphy="" gif="" id="" ``amsjfs6ofx0fc``),="" ``liquid_tags.giphy``="" gif_id="" important:="" have="" request="" production="" [here](https:="" api.giphy.com="" submit).="" for="" first="" runs="" could="" also="" public="" beta="" get="" github.com="" giphyapi).="" soundcloud="" widget="" ``liquid_tags.soundcloud``="" track_url="" youtube="" video="" into="" ``liquid_tags.youtube``="" plugin,="" youtube_id="" [height]="" width="" height="" pixels,="" optionally="" specified.="" if="" they="" not,="" then="" dimensions="" 640="" (wide)="" 390="" (tall).="" you're="" experiencing="" issues="" code="" generating="" (i.e.="" missing="" closing="" tags),="" `summary_max_length="None`" config.="" vimeo="" ``liquid_tags.vimeo``="" vimeo_id="" flash="" html5-friendly="" ``liquid_tags.video``="" url="" video.mp4="" [="" poster.png]="" original="" used.="" poster="" is="" which="" used="" preview="" of="" video.="" file,="" make="" it's="" static="" directory="" put="" appropriate="" url.="" audio="" html5="" ``liquid_tags.audio``="" [url="" audio]="" up="" 3="" urls="" possible.="" different="" versions="" file="" want="" post="" because="" not="" every="" browser="" support="" format.="" include="" link="" ``liquid_tags.include_code``="" include_code="" code.py="" [lang:python]="" [lines:x-y]="" [:hidefilename:]="" [title]="" all="" arguments="" optional="" but="" their="" order="" must="" kept.="" `:hidefilename:`="" only="" allowed="" title="" given.="" lines:1-10="" :hidefilename:="" test="" example="" show="" 10="" lines="" while="" hiding="" actual="" filename.="" script="" ``code``="" subdirectory="" content="" folder:="" default="" location="" changed="" specifying="" code_dir="code" within="" configuration="" file.="" additionally,="" resulting="" hyperlink="" work,="" listed="" under="" static_paths="" setting,="" e.g.:="" 'code']="" ipython="" notebooks="" [ipython][]="" notebook="" ``liquid_tags.notebook``="" filename.ipynb="" should="" specified="" relative="" ``notebooks``="" directory.="" optionally,="" file:="" notebook_dir="notebooks" conversion="" rendering="" rather="" involved,="" few="" extra="" steps="" required="" plugin:="" -="" first,="" need="" install="" ipython:="" pip="" after="" typing="" "make="" html"="" when="" using="" tag,="" called="" ``_nb_header.html``="" produced="" main="" included="" header="" theme.="" easy="" way="" accomplish="" following="" template="" theme="" use:="" extra_header="" {{="" }}="" endif="" line:="" proper="" css="" formatting="" document.="" ###="" tags="" has="" two="" arguments:="" ``cells``="" ``language``.="" slice="" cells="" include:="" cells[2:8]="" name="" language="" pygments="" highlighting="" cells.="" list="" short="" names="" languages="" highlight="" found="" [here](http:="" www.pygments.org="" docs="" lexers="" ).="" language[julia]="" may="" helpful="" those="" [ijulia](https:="" julialang="" ijulia.jl)="" other="" language,="" especially="" project="" [broadens="" scope](https:="" wiki="" roadmap:-ipython)="" [language="" compatibility](http:="" jupyter.org="" default,="" ``ipython``.="" options="" separately,="" together,="" at="" all.="" however,="" both="" come="" before="" ``language``:="" collapsible="" enables="" input="" boxes.="" work="" copy="" ``pelicanhtml_3.tpl``="" (for="" 3.x,="" ``pelicanhtml_2.tpl``="" 2.x)...)="" top="" level="" pelican="" blog.="" containing="" comment="" line="" ``#="" <!--="" collapse="True" --="">`` will be collapsed when the html page is
 loaded and can be expanded by clicking on them. Cells containing the
 comment line ``# <!-- collapse=False -->`` will be open on load but
 can be collapsed by clicking on their header. Cells without collapse
 comments are rendered as standard code input cells.
-
+ 
 ## Testing
-
+ 
 To test the plugin in multiple environments we use [tox](http://tox.readthedocs.org/en/latest/), to run the entire test suite, just type:
-
-```
-cd path/to/liquid_tags
-tox
-```
-
+ 
+ 
+wzxhzdk:0
+ 
+ 
 [IPython]: http://ipython.org/
+</jakevdp@cs.washington.edu>
