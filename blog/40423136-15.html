@@ -14,12 +14,13 @@
 
         <meta name="author" content="40423136" />
         <meta name="keywords" content="brython,w1" />
+        <meta name="description" content="利用漸開線原理、Brython繪製正齒輪嚙合 (17t-13t-11t-14t)的圖" />
 
         <meta property="og:site_name" content="2017Spring 協同產品設計實習 (虎尾科大MDE)" />
         <meta property="og:type" content="article"/>
         <meta property="og:title" content="協同產品設計實習 第15週 Homework"/>
         <meta property="og:url" content="./40423136-15.html"/>
-        <meta property="og:description" content=""/>
+        <meta property="og:description" content="利用漸開線原理、Brython繪製正齒輪嚙合 (17t-13t-11t-14t)的圖"/>
         <meta property="article:published_time" content="2017-06-01" />
             <meta property="article:section" content="Course" />
             <meta property="article:tag" content="brython" />
@@ -158,7 +159,10 @@
     
 </footer><!-- /.post-info -->                    </div>
                 </div>
-                <!-- PELICAN_END_SUMMARY -->
+                <p>利用漸開線原理、Brython繪製正齒輪嚙合 (17t-13t-11t-14t)的圖</p>
+
+
+</hr>
 
 <!-- 導入 Brython 標準程式庫 -->
 
@@ -191,7 +195,7 @@ class Spur(object):
     def __init__(self, ctx):
         self.ctx = ctx
 
-    def create_line(self, x1, y1, x2, y2, width=3, fill="red"):
+    def create_line(self, x1, y1, x2, y2, width=3, fill="white"):
         self.ctx.beginPath()
         self.ctx.lineWidth = width
         self.ctx.moveTo(x1, y1)
@@ -304,27 +308,35 @@ class Spur(object):
             self.create_line(lfx,lfy,rfx,rfy,fill=color)
 canvas = doc['onegear']
 ctx = canvas.getContext("2d")
-x = (canvas.width)/2
+x = (canvas.width)/2 - 100
 y = (canvas.height)/2
 r = 0.8*(canvas.height/2)
 # 齒數
-n = 36
+n17 = 17
+n11 = 11
+n13 = 13
+n14 = 14
+canvas_size = canvas.height*0.4
+r17 = canvas_size*n17/(n17+n11+n13+n14)
+r11 = canvas_size*n11/(n17+n11+n13+n14)
+r13 = canvas_size*n13/(n17+n11+n13+n14)
+r14 = canvas_size*n14/(n17+n11+n13+n14)
+x17 = x - r17
+x11 = x + r11
+x13 = x+ 2*r11 + r13
+x14 = x+ 2*r11 + r13
+y17 = y
+y11 = y
+y13 = y
+y14 = y*2/1.435
 # 壓力角
 pa = 20
-Spur(ctx).Gear(x, y, r, n, pa, "blue")
+gear17 = Spur(ctx).Gear(x17, y17, r17, n17, pa, "black")
+gear11 = Spur(ctx).Gear(x11, y11, r11, n11, pa, "blue")
+gear13 = Spur(ctx).Gear(x13, y13, r13, n13, pa, "black")
+gear14 = Spur(ctx).Gear(x14, y14, r14, n14, pa, "blue")
 
-ctx.beginPath()
-ctx.lineWidth = "600"
-ctx.strokeStyle = "white"
-ctx.moveTo(0,600)
-ctx.lineTo(800,600)
-ctx.stroke()
-
-ctx.beginPath()
-ctx.fillStyle = "   #008844"
-ctx.font = "30px DFKai-sb"
-ctx.fillText("40423136 ",340,300)
-ctx.stroke()
+div = doc["onegear_div"]
 
 </script>
             </div>
@@ -347,6 +359,11 @@ ctx.stroke()
                         </a>
                     </li>
                     <li class="list-group-item">
+                        <a href="./40423136-13.html">
+                            協同產品設計實習 第13週 Homework
+                        </a>
+                    </li>
+                    <li class="list-group-item">
                         <a href="./40423136-12.html">
                             協同產品設計實習 第12週 Homework
                         </a>
@@ -359,11 +376,6 @@ ctx.stroke()
                     <li class="list-group-item">
                         <a href="./40423136-6.html">
                             協同產品設計實習 第6週 Homework
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="./40423136-5.html">
-                            協同產品設計實習 第5週 Homework
                         </a>
                     </li>
                 </ul>
