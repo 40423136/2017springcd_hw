@@ -647,8 +647,6 @@ ctx.stroke()
 &lt;/script&gt;</summary><category term="brython"></category><category term="w1"></category></entry><entry><title>協同產品設計實習 第13週 Homework</title><link href="./40423136-13.html" rel="alternate"></link><published>2017-05-18T11:00:00+08:00</published><updated>2017-05-18T11:00:00+08:00</updated><author><name>40423136</name></author><id>tag:,2017-05-18:./40423136-13.html</id><summary type="html">&lt;p&gt;利用漸開線原理、Brython繪製正齒輪嚙合 (17t-13t-11t-14t)的圖&lt;/p&gt;
 
 
-&lt;/hr&gt;
-
 &lt;!-- 導入 Brython 標準程式庫 --&gt;
 
 &lt;script src="../data/Brython-3.3.1/Brython.js"&gt;&lt;/script&gt;
