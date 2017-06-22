@@ -10,8 +10,8 @@ solvespace 檔案推送&lt;/p&gt;
 solvespace 2D 繪圖 程式碼&lt;/p&gt;
 &lt;!-- 導入 Brython 標準程式庫 --&gt;
 
-&lt;p&gt;&lt;script src="../data/Brython-3.3.1/brython.js"&gt;&lt;/script&gt;
-&lt;script src="../data/Brython-3.3.1/brython_stdlib.js"&gt;&lt;/script&gt;&lt;/p&gt;
+&lt;p&gt;&lt;script src="../data/Brython-3.3.1/Brython.js"&gt;&lt;/script&gt;
+&lt;script src="../data/Brython-3.3.1/Brython_stdlib.js"&gt;&lt;/script&gt;&lt;/p&gt;
 &lt;!-- 啟動 Brython --&gt;
 
 &lt;script&gt;
