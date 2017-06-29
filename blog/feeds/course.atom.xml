@@ -6,6 +6,10 @@
 solvespace 檔案推送&lt;/p&gt;
 &lt;iframe src="./../data/w17/40423136.html"width="600"height="600"&gt;&lt;/iframe&gt;
 
+&lt;iframe src="https://player.vimeo.com/video/223098125" width="640" height="341" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;p&gt;&lt;a href="https://vimeo.com/223098125"&gt;solvespace檔案推送&lt;/a&gt; from &lt;a href="https://vimeo.com/user45106300"&gt;40423136&lt;/a&gt; on &lt;a href="https://vimeo.com"&gt;Vimeo&lt;/a&gt;.&lt;/p&gt;
+
 &lt;p&gt;2.
 solvespace 2D 繪圖 程式碼&lt;/p&gt;
 &lt;!-- 導入 Brython 標準程式庫 --&gt;
@@ -138,8 +142,39 @@ pa = 20
 Spur(ctx).Gear(x, y, r, n, pa, "blue")
 &lt;/script&gt;
 
+&lt;iframe src="https://player.vimeo.com/video/223097101" width="640" height="341" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;p&gt;&lt;a href="https://vimeo.com/223097101"&gt;solvespace 2D繪圖 程式碼&lt;/a&gt; from &lt;a href="https://vimeo.com/user45106300"&gt;40423136&lt;/a&gt; on &lt;a href="https://vimeo.com"&gt;Vimeo&lt;/a&gt;.&lt;/p&gt;
+
 &lt;p&gt;4.Solvespace 近端零組件繪圖&lt;/p&gt;
-&lt;iframe src="./../data/w17/40423136-2.html"width="600"height="600"&gt;&lt;/iframe&gt;</summary><category term="brython"></category><category term="w1"></category></entry><entry><title>協同產品設計實習 第15週 Homework</title><link href="./40423136-15.html" rel="alternate"></link><published>2017-06-01T11:00:00+08:00</published><updated>2017-06-01T11:00:00+08:00</updated><author><name>40423136</name></author><id>tag:,2017-06-01:./40423136-15.html</id><summary type="html">&lt;p&gt;齒輪設計練習&lt;/p&gt;
+&lt;iframe src="./../data/w17/40423136-2.html"width="600"height="600"&gt;&lt;/iframe&gt;
+
+&lt;iframe src="https://player.vimeo.com/video/223223299" width="640" height="341" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;p&gt;&lt;a href="https://vimeo.com/223223299"&gt;solvespace 近端零組件繪圖&lt;/a&gt; from &lt;a href="https://vimeo.com/user45106300"&gt;40423136&lt;/a&gt; on &lt;a href="https://vimeo.com"&gt;Vimeo&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;5.v-rep 零組件模擬&lt;/p&gt;
+&lt;iframe src="https://player.vimeo.com/video/223228296" width="640" height="341" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;p&gt;&lt;a href="https://vimeo.com/223228296"&gt;V-REP 零組件模擬&lt;/a&gt; from &lt;a href="https://vimeo.com/user45106300"&gt;40423136&lt;/a&gt; on &lt;a href="https://vimeo.com"&gt;Vimeo&lt;/a&gt;.&lt;/p&gt;
+
+&lt;iframe src="https://player.vimeo.com/video/223233948" width="640" height="341" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;p&gt;&lt;a href="https://vimeo.com/223233948"&gt;V-REP 零組件模擬-2&lt;/a&gt; from &lt;a href="https://vimeo.com/user45106300"&gt;40423136&lt;/a&gt; on &lt;a href="https://vimeo.com"&gt;Vimeo&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;6.Fossil 檔案推送&lt;/p&gt;
+&lt;pre&gt;
+fossil clone https://40423116@mde2a2.kmol.info/cdag3 cdag3.fossil
+fossil open cdag3.fossil
+fossil add all .
+fossil commit -m ""
+&lt;/pre&gt;
+
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/rhJVLPLBB88" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;</summary><category term="brython"></category><category term="w1"></category></entry><entry><title>協同產品設計實習-四連桿行走機構</title><link href="./40423136-15-2.html" rel="alternate"></link><published>2017-06-11T11:00:00+08:00</published><updated>2017-06-11T11:00:00+08:00</updated><author><name>40423136</name></author><id>tag:,2017-06-11:./40423136-15-2.html</id><summary type="html">&lt;p&gt;四連桿行走機構&lt;/p&gt;
+
+
+&lt;p&gt;各組員說明在分組行走機構模擬與實作過程中所扮演的角色, 並利用影片檔說明所負責完成的任務&lt;/p&gt;
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/Sxl_NzgFizY" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;</summary><category term="brython"></category><category term="w1"></category></entry><entry><title>協同產品設計實習 第15週 Homework</title><link href="./40423136-15.html" rel="alternate"></link><published>2017-06-01T11:00:00+08:00</published><updated>2017-06-01T11:00:00+08:00</updated><author><name>40423136</name></author><id>tag:,2017-06-01:./40423136-15.html</id><summary type="html">&lt;p&gt;齒輪設計練習&lt;/p&gt;
 
 
 &lt;h2&gt;1.請以 W15 練習為網誌標題, 800x600 為畫布大小, 在畫布正中央畫一個半徑為 250 畫素, 壓力角 20, 齒數為 36 齒, 且只有上半齒形的漸開線正齒輪輪廓.&lt;/h2&gt;
